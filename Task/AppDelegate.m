@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DetailViewController.h"
+//#import "DetailViewController.h"
 #import "MasterViewController.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
@@ -27,6 +27,7 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    [NSFetchedResultsController deleteCacheWithName:nil];
     return YES;
 }
 
@@ -56,14 +57,14 @@
 
 #pragma mark - Split view
 
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
-        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-        return YES;
-    } else {
-        return NO;
-    }
-}
+//- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+//    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
+//        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+//        return YES;
+//    } else {
+//        return NO;
+//    }
+//}
 
 #pragma mark - Core Data stack
 
